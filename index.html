@@ -26,7 +26,7 @@
         // Function to trigger the IFTTT webhook
         function triggerWebhook() {
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://maker.ifttt.com/trigger/your_event/with/key/your_ifttt_key", true);
+            xhr.open("POST", "https://maker.ifttt.com/trigger/qr_code_scanned/with/key/rzQicq6Y4PvBLHJI3sH8d", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({
                 "value1": "Triggered via GitHub Page"
