@@ -22,6 +22,22 @@
             color: #1db954;
         }
     </style>
+    <script>
+        // Function to trigger the IFTTT webhook
+        function triggerWebhook() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://maker.ifttt.com/trigger/your_event/with/key/your_ifttt_key", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                "value1": "Triggered via GitHub Page"
+            }));
+        }
+
+        // Trigger the webhook when the page loads
+        window.onload = function() {
+            triggerWebhook();
+        }
+    </script>
 </head>
 <body>
     <div class="container">
