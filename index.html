@@ -23,20 +23,31 @@
         }
     </style>
     <script>
-        // Function to trigger the IFTTT webhook
         function triggerWebhook() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://maker.ifttt.com/trigger/qr_code_scanned/with/key/rzQicq6Y4PvBLHJI3sH8d", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                "value1": "Triggered via GitHub Page"
-            }));
-        }
+        fetch("https://maker.ifttt.com/trigger/qr_code_scanned/with/key/rzQicq6Y4PvBLHJI3sH8d", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ "value1": "Triggered via GitHub Page" })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Webhook triggered successfully.");
+            } else {
+                console.error("Failed to trigger webhook.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    }
+    
+    window.onload = function() {
+        console.log("Triggering webhook...");
+        triggerWebhook();
+    }
 
-        // Trigger the webhook when the page loads
-        window.onload = function() {
-            triggerWebhook();
-        }
     </script>
 </head>
 <body>
